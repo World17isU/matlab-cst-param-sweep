@@ -65,6 +65,7 @@ Written when `SaveMatFile` is true. The MAT file contains the variables:
 | `generatedAt` | `datetime` of the run |
 | `packageVersion` | `cstsweep.version()` |
 | `config` | The `cstsweep.Config` object used for the run |
+| `snapshot` | Initial parameter values (`names`, `values`) captured before the first rebuild |
 | `records` | Struct array with one element per sample, including `Frequency` and `Absorption` curves |
 | `summary` | The summary table |
 

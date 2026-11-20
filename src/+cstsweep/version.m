@@ -5,5 +5,5 @@ function value = version()
 %
 %   See also cstsweep.SweepRunner.
 
-value = "1.0.0";
+value = "1.1.0";
 end

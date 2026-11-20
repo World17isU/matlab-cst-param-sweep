@@ -27,7 +27,7 @@ CST interaction, or documentation.
 
    ```bash
    python -m pip install miss_hit
-   mh_lint src tests config examples run_sweep.m startup.m
+   mh_lint src tests config examples skills/cst-param-sweep/scripts run_sweep.m startup.m
    ```
 
 A licence for CST Studio Suite is only required for integration testing; unit

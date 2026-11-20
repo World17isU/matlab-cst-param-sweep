@@ -92,6 +92,13 @@ classdef Session < handle
             obj.Restored = false;
         end
 
+        function snapshot = getSnapshot(obj)
+            %GETSNAPSHOT Return the recorded parameter names and values.
+            snapshot = struct( ...
+                'names', obj.SnapshotNames, ...
+                'values', obj.SnapshotValues);
+        end
+
         function restoreParameters(obj)
             %RESTOREPARAMETERS Write the snapshot back and rebuild once.
             if obj.Restored || isempty(obj.SnapshotNames)
@@ -111,6 +118,10 @@ classdef Session < handle
                 obj.rebuild(0);
             catch ME
                 obj.warn("Rebuild after restore failed: %s", ME.message);
+            end
+            if ~isempty(obj.Log)
+                obj.Log.info("Restored %d parameter(s) to their initial values.", ...
+                    numel(obj.SnapshotNames));
             end
         end
 

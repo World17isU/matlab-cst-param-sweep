@@ -57,6 +57,9 @@ classdef SweepRunner < handle
             cleanup = onCleanup(@() obj.closeSession()); %#ok<NASGU>
             obj.Session.snapshotParameters( ...
                 [cfg.ParameterNames, cfg.StateParameterName]);
+            snapshot = obj.Session.getSnapshot();
+            obj.Log.info("Initial parameters: %s", ...
+                obj.formatParameters(snapshot.values, snapshot.names));
 
             records = repmat(obj.emptyRecord(cfg), 0, 1);
 
@@ -85,7 +88,7 @@ classdef SweepRunner < handle
             obj.Session.restoreParameters();
             obj.closeSession();
 
-            summary = obj.writeResults(records, cfg);
+            summary = obj.writeResults(records, cfg, snapshot);
         end
     end
 
@@ -301,7 +304,7 @@ classdef SweepRunner < handle
             obj.Log.info("Plan written to %s", planFile);
         end
 
-        function summary = writeResults(obj, records, cfg)
+        function summary = writeResults(obj, records, cfg, snapshot)
             %WRITERESULTS Persist the summary CSV and the results archive.
             summary = obj.buildSummaryTable(records, cfg);
             summaryPath = fullfile(cfg.OutputDir, "summary.csv");
@@ -313,6 +316,7 @@ classdef SweepRunner < handle
                 archive.generatedAt = datetime('now');
                 archive.packageVersion = cstsweep.version();
                 archive.config = cfg;
+                archive.snapshot = snapshot;
                 archive.records = records;
                 archive.summary = summary;
                 matPath = fullfile(cfg.OutputDir, "results.mat");

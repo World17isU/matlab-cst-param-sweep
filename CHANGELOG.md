@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-20
+
+### Added
+
+- Agent skill package under `skills/cst-param-sweep/`: `SKILL.md` operating
+  instructions, configuration and troubleshooting references, a PowerShell
+  readiness check, a no-CST smoke test, and a `matlab -batch` runner.
+- The sweep log now reports the initial parameter values, how many parameters
+  were restored, and `results.mat` stores the initial snapshot.
+
+### Changed
+
+- CI and contributor instructions lint the skill scripts as well.
+
 ## [1.0.0] - 2026-11-20
 
 ### Added

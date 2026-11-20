@@ -26,4 +26,4 @@ jobs:
         run: python -m pip install --upgrade pip miss_hit
 
       - name: Lint MATLAB sources
-        run: mh_lint src tests config examples run_sweep.m startup.m
+        run: mh_lint src tests config examples skills/cst-param-sweep/scripts run_sweep.m startup.m

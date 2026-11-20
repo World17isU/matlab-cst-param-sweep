@@ -127,6 +127,27 @@ global MATLAB settings.
    summary = cstsweep.SweepRunner(cfg).run();
    ```
 
+## Agent skill
+
+`skills/cst-param-sweep/` packages the workflow for AI coding agents:
+
+- `SKILL.md` — when to use the toolkit, the dry-run-first workflow, success
+  criteria, and safety rules;
+- `references/configuration.md` and `references/troubleshooting.md` — condensed
+  operational references;
+- `scripts/check_prerequisites.ps1` — checks the repository, MATLAB, CST
+  processes, and write access without starting either application;
+- `scripts/smoke_test.m` — dry-runs the bundled example table; no CST needed;
+- `scripts/run_sweep_batch.m` — runs a configuration under `matlab -batch` and
+  prints a compact report.
+
+```powershell
+matlab -batch "addpath('skills/cst-param-sweep/scripts'); smoke_test(pwd)"
+```
+
+The skill assumes the repository is the working directory. It never approves a
+full sweep without a preceding dry run and a short test run.
+
 ## How it works
 
 ```mermaid
@@ -262,6 +283,7 @@ matlab-cst-param-sweep/
 ├── examples/
 │   ├── parameters_example.csv
 │   └── run_example.m
+├── skills/cst-param-sweep/      # agent skill: SKILL.md, references, scripts
 ├── tests/                      # matlab.unittest suite (no CST required)
 └── docs/
 ```
@@ -279,7 +301,7 @@ Static analysis with [miss_hit](https://github.com/florianschanda/miss_hit):
 
 ```bash
 python -m pip install miss_hit
-mh_lint src tests config examples run_sweep.m startup.m
+mh_lint src tests config examples skills/cst-param-sweep/scripts run_sweep.m startup.m
 ```
 
 CI runs the same linter on every push and pull request.
