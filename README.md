@@ -4,6 +4,7 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-0078D6)
 ![CST Studio Suite](https://img.shields.io/badge/CST%20Studio%20Suite-2020%2B-1F6FEB)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![CI](https://github.com/World17isU/matlab-cst-param-sweep/actions/workflows/ci.yml/badge.svg)](https://github.com/World17isU/matlab-cst-param-sweep/actions/workflows/ci.yml)
 
 Reproducible, scripted parameter sweeps for [CST Studio Suite](https://www.3ds.com/products/simulia/cst-studio-suite)
 projects, driven from MATLAB through the CST COM automation interface.
@@ -73,7 +74,7 @@ from a single `.m` file.
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/matlab-cst-param-sweep.git
+git clone https://github.com/World17isU/matlab-cst-param-sweep.git
 cd matlab-cst-param-sweep
 ```
 
@@ -318,21 +319,16 @@ CI runs the same linter on every push and pull request.
 | Absorption looks inverted | dB/linear misdetection | Set `SParameterFormat` to `"db"` or `"linear"` |
 | `Missing parameter column(s)` | CSV header mismatch | Match the CSV header to `ParameterNames` exactly |
 
-## Publishing to GitHub
+## Repository
 
-The repository is ready to push. Create an empty repository on GitHub, then:
+The project is published at
+[github.com/World17isU/matlab-cst-param-sweep](https://github.com/World17isU/matlab-cst-param-sweep).
+Use GitHub issues for bug reports and feature requests. Released tags:
 
-```bash
-git remote add origin https://github.com/<your-username>/matlab-cst-param-sweep.git
-git branch -M main
-git push -u origin main
-```
-
-With the GitHub CLI:
-
-```bash
-gh repo create matlab-cst-param-sweep --public --source=. --remote=origin --push
-```
+| Tag | Contents |
+| --- | --- |
+| `v1.0.0` | Initial toolkit: configuration, COM session, sweep runner, tests, docs |
+| `v1.1.0` | Agent skill, parameter-snapshot logging and archiving |
 
 ## Contributing
 
