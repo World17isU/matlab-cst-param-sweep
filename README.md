@@ -162,7 +162,7 @@ flowchart LR
     H --> I[Reset results + start solver]
     I --> J[Wait for solver]
     J --> K[Export and parse S11]
-    K --> L[A = 1 - |S11|^2]
+    K --> L["A = 1 - abs(S11)^2"]
     L --> M[Write sample file + record]
     M --> F
     F --> N[Next state]
