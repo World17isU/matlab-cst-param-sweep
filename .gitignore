@@ -1,0 +1,30 @@
+# MATLAB / Simulink
+*.asv
+*.m~
+*.autosave
+*.slx.r20*
+slprj/
+codegen/
+*.mlx.bak
+
+# Generated sweep output
+results/
+out/
+*.mat
+
+# Local configuration (may contain machine-specific paths)
+config/local_config.m
+
+# Operating system
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Python tooling used by contributors
+.venv/
+__pycache__/

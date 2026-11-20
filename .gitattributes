@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+*.m      text eol=lf
+*.md     text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.csv    text eol=lf
+
+*.cst    binary
+*.cts    binary
+*.mat    binary
+*.png    binary

@@ -1,0 +1,66 @@
+name: Bug report
+description: Something in the sweep does not behave as documented.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please redact local paths and
+        proprietary model data before pasting configuration or logs.
+  - type: input
+    id: matlab-version
+    attributes:
+      label: MATLAB version
+      placeholder: "R2023b"
+    validations:
+      required: true
+  - type: input
+    id: cst-version
+    attributes:
+      label: CST Studio Suite version
+      placeholder: "2024"
+    validations:
+      required: true
+  - type: dropdown
+    id: solver-type
+    attributes:
+      label: Solver type
+      options:
+        - Time domain (FDSolver)
+        - Frequency domain (Solver)
+        - Other / not sure
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the project in CST
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour and log excerpt
+      description: Paste the relevant lines from sweep.log.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant configuration
+      description: The configuration function, with local paths redacted.
+      render: matlab
+    validations:
+      required: false
